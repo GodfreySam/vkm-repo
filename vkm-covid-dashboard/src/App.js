@@ -3,18 +3,8 @@ import './styles.css';
 
 function App() {
 	const [ allCase, setAllCase ] = useState([]);
-	const [ totalCase, setTotalCase ] = useState([]);
-
-	const BarStyling = {
-		width: '25rem',
-		margin: '0 auto',
-		marginTop: '10%',
-		marginBottom: '5%',
-		background: '#F1F1F1',
-		border: 'none',
-		padding: '0.5rem',
-	};
-
+	const [totalCase, setTotalCase] = useState();
+	
 	useEffect(() => {
 		fetch('https://covidnigeria.herokuapp.com/api', { crossdomain: true })
 			.then((response) => response.json())
@@ -30,7 +20,7 @@ function App() {
 			<div>
 				{allCase.map((data, index) => {
 					return (
-						<div key={data.state}>
+						<div key={data._id}>
 							<ul>
 								<li className="state">
 									<div className="state-header">
